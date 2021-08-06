@@ -6,7 +6,10 @@ const RegisterComplete = ({ history }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  useEffect(() => {}, []);
+  // falta
+  useEffect(() => {
+    setEmail(window.localStorage.getItem("emailForRegistration"));
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
