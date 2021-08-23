@@ -3,7 +3,7 @@ import AdminNav from "../../../components/nav/AdminNav";
 import { toast } from "react-toastify";
 import { useSelector } from "react-redux";
 import { getCategories } from "../../../functions/category";
-import { createSub, getSubs, removeSub } from "../../../functions/sub";
+import { createSub, removeSub, getSubs } from "../../../functions/sub";
 import { Link } from "react-router-dom";
 import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
 import CategoryForm from "../../../components/forms/CategoryForm";
@@ -18,7 +18,6 @@ const SubCreate = () => {
   const [category, setCategory] = useState("");
   const [subs, setSubs] = useState([]);
 
-  // keyword
   const [keyword, setKeyword] = useState("");
 
   useEffect(() => {
@@ -51,7 +50,7 @@ const SubCreate = () => {
   const handleRemove = async (slug) => {
     if (window.confirm("Delete?")) {
       setLoading(true);
-      removeSub(slug, user.authtoken)
+      removeSub(slug, user.token)
         .then((res) => {
           setLoading(false);
           toast.error(`${res.data.name} deleted`);
@@ -66,7 +65,6 @@ const SubCreate = () => {
     }
   };
 
-  // searched keyword
   const searched = (keyword) => (c) => c.name.toLowerCase().includes(keyword);
 
   return (
@@ -77,7 +75,7 @@ const SubCreate = () => {
         </div>
         <div className="col">
           {loading ? (
-            <h4 className="text-danger">Loading...</h4>
+            <h4 className="text-danger">Loading..</h4>
           ) : (
             <h4>Create sub category</h4>
           )}
