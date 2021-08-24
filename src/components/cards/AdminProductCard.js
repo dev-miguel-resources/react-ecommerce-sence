@@ -7,11 +7,35 @@ import { Link } from "react-router-dom";
 const { Meta } = Card;
 
 const AdminProductCard = ({ product, handleRemove }) => {
+  // destructure
+  const { title, description, images, slug } = product;
 
-    // destructure 
-    const { title, description, images, slug } = product;
-
-  return <p>Hello am ProductCard</p>;
+  return (
+    <Card
+      cover={
+        <img
+          alt="cards-products"
+          src={images && images.length ? images[0].url : laptop}
+          style={{ height: "150px", objectFit: "cover" }}
+          className="p-1"
+        />
+      }
+      actions={[
+        <Link to={`/admin/product/${slug}`}>
+          <EditOutlined className="text-warning" />
+        </Link>,
+        <DeleteOutlined
+          onClick={() => handleRemove(slug)}
+          className="text-danger"
+        />,
+      ]}
+    >
+      <Meta
+        title={title}
+        description={`${description && description.substring(0, 40)}...`}
+      />
+    </Card>
+  );
 };
 
 export default AdminProductCard;

@@ -58,6 +58,7 @@ const Header = () => {
         <SubMenu
           icon={<SettingOutlined />}
           title={user.email && user.email.split("@")[0]}
+          className="float-right"
         >
           {user && user.role === "subscriber" && (
             <Item>
