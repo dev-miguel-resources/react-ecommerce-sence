@@ -39,6 +39,7 @@ const ProductUpdate = ({ match, history }) => {
   useEffect(() => {
     loadProduct();
     loadCategories();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const loadProduct = () => {
@@ -54,6 +55,7 @@ const ProductUpdate = ({ match, history }) => {
       let arr = [];
       p.data.subs.map((s) => {
         arr.push(s._id);
+        return arr;
       });
       console.log("ARR", arr);
       setArrayOfSubs((prev) => arr); // required for ant design select to work
