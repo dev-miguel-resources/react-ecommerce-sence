@@ -45,7 +45,7 @@ const ProductUpdate = ({ match, history }) => {
   const loadProduct = () => {
     getProduct(slug).then((p) => {
       // console.log("single product", p);
-      // 1 load single proudct
+      // 1 load single product
       setValues({ ...values, ...p.data });
       // 2 load single product category subs
       getCategorySubs(p.data.category._id).then((res) => {
